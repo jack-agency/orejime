@@ -1,10 +1,10 @@
 {
-  "name": "orejime",
+  "name": "@jack-agency/orejime",
   "version": "2.1.1",
   "description": "An easy to use consent manager that focuses on accessibility. A fork of Klaro!.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/empreinte-digitale/orejime.git"
+    "url": "git+https://github.com/jack-agency/orejime.git"
   },
   "keywords": [
     "cookie",
@@ -28,9 +28,9 @@
   "author": "Emmanuel Pelletier <e.pelletier@empreintedigitale.fr>",
   "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/empreinte-digitale/orejime/issues"
+    "url": "https://github.com/jack-agency/orejime/issues"
   },
-  "homepage": "https://github.com/empreinte-digitale/orejime#readme",
+  "homepage": "https://github.com/jack-agency/orejime#readme",
   "dependencies": {
     "@babel/runtime": "^7.1.2",
     "react-modal": "^3.13.1"

@@ -1,4 +1,8 @@
 function format(string, ...args) {
+	if (string instanceof Map) {
+		return Array.from(string.values()).map((s) => format(s, ...args));
+	}
+
 	var t = typeof args[0];
 	var values;
 	if (args.length == 0) values = {};

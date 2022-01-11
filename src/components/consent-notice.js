@@ -1,4 +1,5 @@
 import React from 'react';
+import {arrayOfArrays} from '../utils/arrays';
 import {getPurposes} from '../utils/config';
 
 export default class ConsentNotice extends React.Component {
@@ -20,6 +21,28 @@ export default class ConsentNotice extends React.Component {
 			.map((purpose) => t(['purposes', purpose]))
 			.join(', ');
 		const title = t(['consentNotice', 'title']);
+
+		const privacyPolicyText = t(['consentNotice', 'privacyPolicy', 'text'], {
+			privacyPolicy: (
+				<a
+					key="privacyPolicyLink"
+					className={ns('Notice-privacyPolicyLink')}
+					href={config.privacyPolicy}
+				>
+					{t(['consentNotice', 'privacyPolicy', 'name'])}
+				</a>
+			)
+		});
+
+		const noticeDescription = arrayOfArrays(
+			t(['consentNotice', 'description'], {
+				purposes: (
+					<strong key="purposes" className={ns('Notice-purposes')}>
+						{purposesText}
+					</strong>
+				)
+			})
+		);
 
 		return (
 			<div
@@ -55,29 +78,17 @@ export default class ConsentNotice extends React.Component {
 							</h1>
 						)}
 
-						<p className={ns('Notice-description')}>
-							{t(['consentNotice', 'description'], {
-								purposes: (
-									<strong
-										key="purposes"
-										className={ns('Notice-purposes')}
-									>
-										{purposesText}
-									</strong>
-								)
-							})}
-							{t(['consentNotice', 'privacyPolicy', 'text'], {
-								privacyPolicy: (
-									<a
-										key="privacyPolicyLink"
-										className={ns('Notice-privacyPolicyLink')}
-										href={config.privacyPolicy}
-									>
-										{t(['consentNotice', 'privacyPolicy', 'name'])}
-									</a>
-								)
-							})}
-						</p>
+						<div className={ns('Notice-descriptionWrapper')}>
+							{noticeDescription.map((text) => (
+								<p className={ns('Notice-description')}>{text}</p>
+							))}
+
+							{privacyPolicyText && (
+								<p className={ns('Notice-privacyPolicyText')}>
+									{privacyPolicyText}
+								</p>
+							)}
+						</div>
 					</div>
 
 					{manager.changed && (
